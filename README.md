@@ -1,8 +1,7 @@
-<div align"cente">
+<div align="center">
+<img src="figures/logo.png" width="400px">
 
-<img src"figures/logo.pn" width"400p">
-
-<h3 align"cente">
+<h3 align="center">
     <p>A large-scale, fine-grained, diverse preference dataset</p>
 </h3>
 
@@ -33,10 +32,13 @@ To collect high-quality preference and textual feedback, we design a fine-graine
 
 ## Dataset Construction
 
+<img src="figures/ultraf.png" width="800px">
+
 ### Instruction Sampling
+
 We sample 64121 instructions from 6 public available and high-quality datasets. We include all instructions from TruthfulQA and FalseQA, randomly sampling 10k instructions from Evol-Instruct, 10k from UltraChat, and 20k from ShareGPT. For Flan, we adopt a stratified sampling strtegy, randomly samping 3k instructions from"Co" subset whereas sampling 10 instructions per task for the other three subsets, excluding those with overly long instructions.
 
-```JSON
+```json
 {
 "evol_instruc": 10000, 
 "false_q": 2365,
@@ -95,7 +97,7 @@ Following [1] and [2], we define a set of principles to explicitly align model b
 
 
 
-```JSON
+```JSON5
 {
         "source": "sharegpt", // the dataset where the instruction comes from
         "id": "D2TC9GP_0", // the id of the instruction in the source dataset
