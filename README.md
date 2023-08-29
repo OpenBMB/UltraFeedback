@@ -40,12 +40,12 @@ We sample 64121 instructions from 6 public available and high-quality datasets. 
 
 ```json
 {
-"evol_instruc": 10000, 
-"false_q": 2365,
-"fla": 20939, 
-"sharegp": 20000, 
-"truthful_q": 817,
-"ultracha": 10000 
+"evol_instruct": 10000, 
+"false_qa": 2365,
+"flan": 20939, 
+"sharegpt": 20000, 
+"truthful_qa": 817,
+"ultrachat": 10000 
 }
 ```
 
@@ -97,7 +97,7 @@ Following [1] and [2], we define a set of principles to explicitly align model b
 
 
 
-```JSON5
+```JSONC
 {
         "source": "sharegpt", // the dataset where the instruction comes from
         "id": "D2TC9GP_0", // the id of the instruction in the source dataset
