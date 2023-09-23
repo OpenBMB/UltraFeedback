@@ -9,25 +9,22 @@
 
 ## News
 
-- [2023/08/20]: The UltraFeedback dataset is released.
+- [2023/09/23]: UltraRM unleashes the power of UltraLM2-13B! A simple best-of-16 sampling achieves **92.30%** win rate against text-davinci-003 on [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) benchmark!
+- [2023/09/23]: We release the UltraFeedback dataset, along with UltraFeedback-powered reward model UltraRM! UltraRM built **new SOTAs** over open-source models!  
 
 ## Introduction
 
 - 🤗 [Huggingface Datasets Host](https://huggingface.co/datasets)
 
-UltraFeedback is a **large-scale, fine-grained, diverse preference dataset**, used for training powerful reward models and critic models. We collect about 64k prompts from diverse resources (including UltraChat, ShareGPT, Evol-Instruct, TruthfulQA, FalseQA, and FLAN, see Table for dataset statistics). We then use these prompts to query multiple LLMs (see Table for model lists) and generate 4 different responses for each prompt, resulting in a total of 160k samples. 
+UltraFeedback is a **large-scale, fine-grained, diverse preference dataset**, used for training powerful reward models and critic models. We collect about 64k prompts from diverse resources (including UltraChat, ShareGPT, Evol-Instruct, TruthfulQA, FalseQA, and FLAN, see Table for dataset statistics). We then use these prompts to query multiple LLMs (see Table for model lists) and generate 4 different responses for each prompt, resulting in a total of 256k samples. 
 
 To collect high-quality preference and textual feedback, we design a fine-grained annotation instruction, which contains 4 different aspects, namely **instruction-following**, **truthfulness**, **honesty** and **helpfulness**. The detailed instruction can be found in (). We then ask GPT-4 to annotate the collected samples based on the instruction. 
 
 ## Features
 
-- 🆚 **Scale**: UltraFeedback consists of 40k prompts, 160k responses and 640k high-quality feedback. RLHF researchers could further construct around 1 millon comparison pairs to train their reward models. 
+- 🆚 **Scale**: UltraFeedback consists of 64k prompts, 256k responses and 380k high-quality feedback. RLHF researchers could further construct around 1 millon comparison pairs to train their reward models. 
 - 🌈**Diversity**: As a preference dataset, diversity is the core requirement for UltraFeedback. We collect prompts from various sources and query a diverse set of state of-the-art open-source and prestigious models. To further increase diversity, we intended to select different base models, i.e., LLaMA, Falcon, StarChat, MPT, GPT and Bard. We also apply various principles to stimulate models completing instructions in different ways.
 - 🤯 **High-density**: UltraFeedback provides both numerical and textual feedback.  More, we wrote fine-grained annotation documents to help rate responses in all dimensions
-
-
-
-
 
 
 ## Dataset Construction
@@ -183,8 +180,18 @@ Here we present an example of UltraFeedback
 
 
 
+# UltraRM
+
+We train and release a reward model UltraRM based on UltraFeedback to further facilitate alignment research. UltraRM is initialized by LLaMA2-13B.
+
+Specifically, we train two versions of reward models, where UltraRM is merely fine-tuned on UltraFeedback and UltraRM+ is fine-tuned on a mixture of UltraFeedback and an equal-size sample from three open-source datasets including [Anthropic HH-RLHF](https://huggingface.co/datasets/Anthropic/hh-rlhf), [Standford SHP](https://huggingface.co/datasets/stanfordnlp/SHP), and [Summarization](https://huggingface.co/datasets/openai/summarize_from_feedback).
+
+On four public preference test sets, our UltraRMachieves SOTA over other open-source reward models. 
+
+![image-20230923101104880](D:\Cloud\lab\Alignment\UltraFeedback\UltraFeedback\figures\ultrarm)
+
 ## To Do
-- [ ] Train a reward model and a critic model using UltraFeedback (Coming soon!).
+- [x] Train a reward model and a critique model using UltraFeedback (Coming soon!).
 - [ ] Enhance open-source LLMs with RLHF.
 - [ ] Extend UltraFeedback to multi-round dialogues.
 
