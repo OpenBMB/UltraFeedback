@@ -1,9 +1,9 @@
 <div align="center">
+    
 <img src="figures/logo.png" width="400px">
 
-<h3 align="center">
-    <p>A large-scale, fine-grained, diverse preference dataset</p>
-</h3>
+**A large-scale, fine-grained, diverse preference dataset**
+
 <p align="center">
  <a href="#introduction"> Introduction</a> •
  <a href="#dataset-construction">Dataset Construction</a> •
