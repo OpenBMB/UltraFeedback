@@ -4,27 +4,36 @@
 <h3 align="center">
     <p>A large-scale, fine-grained, diverse preference dataset</p>
 </h3>
+<p align="center">
+ <a href="#introduction"> Introduction</a> •
+ <a href="#dataset-construction">Dataset Construction</a> •
+ <a href="#dataset-example">Example</a> •
+ <a href="#ultrarm">UltraRM</a>
+</p>
 
 </div>
 
 ## News
 
-- [2023/09/23]: UltraRM unleashes the power of UltraLM2-13B! A simple best-of-16 sampling achieves **92.30%** win rate against text-davinci-003 on [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) benchmark!
-- [2023/09/23]: We release the UltraFeedback dataset, along with UltraFeedback-powered reward model UltraRM! UltraRM built **new SOTAs** over open-source models!  
+- [2023/09/25]: UltraRM unleashes the power of [UltraLM-13B-v2.0](https://huggingface.co/openbmb/UltraLM-13b-v2.0) and [UltraLM-13B](https://huggingface.co/openbmb/UltraLM-13b)! A simple best-of-16 sampling achieves **92.30%** (UltraLM2) and **91.54%** (UltraLM) win rates against text-davinci-003 on [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) benchmark!
+- [2023/09/25]: We release the [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback) dataset, along with UltraFeedback-powered reward model [UltraRM](https://huggingface.co/datasets/openbmb/UltraFeedback)! UltraRM built **new SOTAs** over open-source models!  
+
+## Links
+
+- 🤗 [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback)
+- 🤗 [UltraRM](https://huggingface.co/datasets/openbmb/UltraFeedback)
 
 ## Introduction
 
-- 🤗 [Huggingface Datasets Host](https://huggingface.co/datasets)
+UltraFeedback is a **large-scale, fine-grained, diverse preference dataset**, used for training powerful reward models and critic models. We collect about 64k prompts from diverse resources (including UltraChat, ShareGPT, Evol-Instruct, TruthfulQA, FalseQA, and FLAN, see [here](#instruction-sampling) for dataset statistics). We then use these prompts to query multiple LLMs (see [here](#model-sampling) for model lists) and generate 4 different responses for each prompt, resulting in a total of 256k samples. 
 
-UltraFeedback is a **large-scale, fine-grained, diverse preference dataset**, used for training powerful reward models and critic models. We collect about 64k prompts from diverse resources (including UltraChat, ShareGPT, Evol-Instruct, TruthfulQA, FalseQA, and FLAN, see Table for dataset statistics). We then use these prompts to query multiple LLMs (see Table for model lists) and generate 4 different responses for each prompt, resulting in a total of 256k samples. 
-
-To collect high-quality preference and textual feedback, we design a fine-grained annotation instruction, which contains 4 different aspects, namely **instruction-following**, **truthfulness**, **honesty** and **helpfulness**. The detailed instruction can be found in (). We then ask GPT-4 to annotate the collected samples based on the instruction. 
+To collect high-quality preference and textual feedback, we design a fine-grained annotation instruction, which contains 4 different aspects, namely **instruction-following**, **truthfulness**, **honesty** and **helpfulness**. We then ask GPT-4 to annotate the collected samples based on the instruction. 
 
 ## Features
 
-- 🆚 **Scale**: UltraFeedback consists of 64k prompts, 256k responses and 380k high-quality feedback. RLHF researchers could further construct around 1 millon comparison pairs to train their reward models. 
-- 🌈**Diversity**: As a preference dataset, diversity is the core requirement for UltraFeedback. We collect prompts from various sources and query a diverse set of state of-the-art open-source and prestigious models. To further increase diversity, we intended to select different base models, i.e., LLaMA, Falcon, StarChat, MPT, GPT and Bard. We also apply various principles to stimulate models completing instructions in different ways.
-- 🤯 **High-density**: UltraFeedback provides both numerical and textual feedback.  More, we wrote fine-grained annotation documents to help rate responses in all dimensions
+- 🆚 **Scale**: UltraFeedback consists of 64k prompts, 256k responses and 380k high-quality feedback. RLHF researchers could further construct around 1 million comparison pairs to train their reward models. 
+- 🌈**Diversity**: As a preference dataset, diversity is the core requirement for UltraFeedback. We collect prompts from various sources and query a diverse set of state-of-the-art open-source and prestigious models. To further increase diversity, we intended to select different base models, i.e., LLaMA, Falcon, StarChat, MPT, GPT and Bard. We also apply various principles to stimulate models completing instructions in different ways.
+- 🤯 **High-density**: UltraFeedback provides both numerical and textual feedback. Moreover, we wrote fine-grained annotation documents to help rate responses in all dimensions
 
 
 ## Dataset Construction
@@ -33,16 +42,16 @@ To collect high-quality preference and textual feedback, we design a fine-graine
 
 ### Instruction Sampling
 
-We sample 64121 instructions from 6 public available and high-quality datasets. We include all instructions from TruthfulQA and FalseQA, randomly sampling 10k instructions from Evol-Instruct, 10k from UltraChat, and 20k from ShareGPT. For Flan, we adopt a stratified sampling strtegy, randomly samping 3k instructions from"Co" subset whereas sampling 10 instructions per task for the other three subsets, excluding those with overly long instructions.
+We sample 64,121 instructions from 6 public available and high-quality datasets. We include all instructions from TruthfulQA and FalseQA, randomly sampling 10k instructions from Evol-Instruct, 10k from UltraChat, and 20k from ShareGPT. For Flan, we adopt a stratified sampling strtegy, randomly samping 3k instructions from "CoT" subset whereas sampling 10 instructions per task for the other three subsets, excluding those with overly long instructions.
 
 ```json
 {
-"evol_instruct": 10000, 
-"false_qa": 2365,
-"flan": 20939, 
-"sharegpt": 20000, 
-"truthful_qa": 817,
-"ultrachat": 10000 
+    "evol_instruct": 10000, 
+    "false_qa": 2365,
+    "flan": 20939, 
+    "sharegpt": 20000, 
+    "truthful_qa": 817,
+    "ultrachat": 10000 
 }
 ```
 
@@ -90,8 +99,6 @@ Following [1] and [2], we define a set of principles to explicitly align model b
 | QA Feedback        |               |                          |                   |                         |                   |                 | Scalar           | ✔                    |
 | UltraFeedback      |               |                          |                   |                         |                   |                 | Scalar / Textual | ✔                    |
 ## Dataset Format
-
-
 
 
 ```JSONC
@@ -158,7 +165,7 @@ Following [1] and [2], we define a set of principles to explicitly align model b
                 ...
             }
         ]
-    },
+    }
 ```
 
 
@@ -184,11 +191,13 @@ Here we present an example of UltraFeedback
 
 We train and release a reward model UltraRM based on UltraFeedback to further facilitate alignment research. UltraRM is initialized by LLaMA2-13B.
 
-Specifically, we train two versions of reward models, where UltraRM is merely fine-tuned on UltraFeedback and UltraRM+ is fine-tuned on a mixture of UltraFeedback and an equal-size sample from three open-source datasets including [Anthropic HH-RLHF](https://huggingface.co/datasets/Anthropic/hh-rlhf), [Standford SHP](https://huggingface.co/datasets/stanfordnlp/SHP), and [Summarization](https://huggingface.co/datasets/openai/summarize_from_feedback).
+Specifically, we train two versions of reward models, where UltraRM-UF is merely fine-tuned on UltraFeedback and UltraRM is fine-tuned on a mixture of UltraFeedback and an equal-size sample from three open-source datasets including [Anthropic HH-RLHF](https://huggingface.co/datasets/Anthropic/hh-rlhf), [Standford SHP](https://huggingface.co/datasets/stanfordnlp/SHP), and [Summarization](https://huggingface.co/datasets/openai/summarize_from_feedback).
 
-On four public preference test sets, our UltraRMachieves SOTA over other open-source reward models. 
+On four public preference test sets, our UltraRM achieves SOTA over other open-source reward models. 
 
-![image-20230923101104880](D:\Cloud\lab\Alignment\UltraFeedback\UltraFeedback\figures\ultrarm)
+<img src="figures/ultrarm.png" width="800px">
+
+
 
 ## To Do
 - [x] Train a reward model and a critique model using UltraFeedback (Coming soon!).
@@ -196,7 +205,7 @@ On four public preference test sets, our UltraRMachieves SOTA over other open-so
 - [ ] Extend UltraFeedback to multi-round dialogues.
 
 ## Limitations
-- Although GPT-4 can provide well-aligned annotation and textual feedback for most samples, we must note that GPT-4 also make mistakes. 
+- Although GPT-4 can provide well-aligned annotation and textual feedback for most samples, we must note that GPT-4 also makes mistakes. 
 
 
 
