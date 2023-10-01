@@ -18,7 +18,7 @@
 # News
 
 - [2023/09/26]: UltraRM unleashes the power of [UltraLM-13B-v2.0](https://huggingface.co/openbmb/UltraLM-13b-v2.0) and [UltraLM-13B](https://huggingface.co/openbmb/UltraLM-13b)! A simple best-of-16 sampling achieves **92.30%** (UltraLM2, 🥇 in 13B results) and **91.54%** (UltraLM, 🥇 in LLaMA-1 results) win rates against text-davinci-003 on [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) benchmark!
-- [2023/09/26]: We release the [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback) dataset, along with UltraFeedback-powered reward model [UltraRM](https://huggingface.co/datasets/openbmb/UltraFeedback) and critique model [UltraCM](https://huggingface.co/datasets/openbmb/UltraCM-13b)! Both built **new SOTAs** over open-source models!  
+- [2023/09/26]: We release the [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback) dataset, along with UltraFeedback-powered reward model [UltraRM](https://huggingface.co/openbmb/UltraRM-13b) and critique model [UltraCM](https://huggingface.co/openbmb/UltraCM-13b)! Both built **new SOTAs** over open-source models!  
 
 # Links
 
