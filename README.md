@@ -23,8 +23,8 @@
 # Links
 
 - 🤗 [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback)
-- 🤗 [UltraRM](https://huggingface.co/datasets/openbmb/UltraRM-13b)
-- 🤗 [UltraCM](https://huggingface.co/datasets/openbmb/UltraCM-13b)
+- 🤗 [UltraRM](https://huggingface.co/openbmb/UltraRM-13b)
+- 🤗 [UltraCM](https://huggingface.co/openbmb/UltraCM-13b)
 
 # Introduction
 
