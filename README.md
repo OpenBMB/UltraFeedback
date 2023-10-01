@@ -17,7 +17,7 @@
 
 # News
 
-- [2023/09/26]: UltraRM unleashes the power of [UltraLM-13B-v2.0](https://huggingface.co/openbmb/UltraLM-13b-v2.0) and [UltraLM-13B](https://huggingface.co/openbmb/UltraLM-13b)! A simple best-of-16 sampling achieves **92.30%** (UltraLM2, 🥇 in 13B results) and **91.54%** (UltraLM, 🥇 in LLaMA-1 results) win rates against text-davinci-003 on [AlpacaEval](https://github.com/tatsu-lab/alpaca_eval) benchmark (see [PR](https://github.com/tatsu-lab/alpaca_eval/pull/139)) !
+- [2023/09/26]: UltraRM unleashes the power of [UltraLM-13B-v2.0](https://huggingface.co/openbmb/UltraLM-13b-v2.0) and [UltraLM-13B](https://huggingface.co/openbmb/UltraLM-13b)! A simple best-of-16 sampling achieves **92.30%** (UltraLM2, 🥇 in 13B results) and **91.54%** (UltraLM, 🥇 in LLaMA-1 results) win rates against text-davinci-003 on [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) benchmark!
 - [2023/09/26]: We release the [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback) dataset, along with UltraFeedback-powered reward model [UltraRM](https://huggingface.co/datasets/openbmb/UltraFeedback) and critique model [UltraCM](https://huggingface.co/datasets/openbmb/UltraCM-13b)! Both built **new SOTAs** over open-source models!  
 
 # Links
@@ -45,14 +45,14 @@ To collect high-quality preference and textual feedback, we design a fine-graine
 
 ## Instruction Sampling
 
-We sample 64,015 instructions from 6 public available and high-quality datasets. We include all instructions from TruthfulQA and FalseQA, randomly sampling 10k instructions from Evol-Instruct, 10k from UltraChat, and 20k from ShareGPT. For FLAN, we adopt a stratified sampling strategy, randomly sampling 3k instructions from "CoT" subset whereas sampling 10 instructions per task for the other three subsets, excluding those with overly long instructions.
+We sample 63,967 instructions from 6 public available and high-quality datasets. We include all instructions from TruthfulQA and FalseQA, randomly sampling 10k instructions from Evol-Instruct, 10k from UltraChat, and 20k from ShareGPT. For FLAN, we adopt a stratified sampling strategy, randomly sampling 3k instructions from "CoT" subset whereas sampling 10 instructions per task for the other three subsets, excluding those with overly long instructions.
 
 ```json
 {
     "evol_instruct": 10000, 
     "false_qa": 2339,
     "flan": 20939, 
-    "sharegpt": 19997, 
+    "sharegpt": 19949, 
     "truthful_qa": 811,
     "ultrachat": 9929 
 }
@@ -65,8 +65,8 @@ To prevent reward model from overfiting to certain text style or capturing spuri
 - LLaMA family: 
   1. LLaMA-2-7B-chat, LLaMA-2-13B-chat, LLaMA-2-70B-chat
   2. UltraLM-13B, UltraLM-65B
-  3. WizardLM-7B, WizardLM-13B, WizardLM-70B
-  4. Vicuna-33B
+  3. WizardLM-7B-v1.2, WizardLM-13B-v1.2, WizardLM-70B-v1.0
+  4. Vicuna-33B-v1.3
   5. Alpaca-7B
 - Non-LLaMA series:
   1. Falcon-40B-instruct
