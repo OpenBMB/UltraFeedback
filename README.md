@@ -22,6 +22,7 @@
 
 # Links
 
+- 📜 [Paper](https://arxiv.org/abs/2310.01377)
 - 🤗 [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback)
 - 🤗 [UltraRM](https://huggingface.co/openbmb/UltraRM-13b)
 - 🤗 [UltraCM](https://huggingface.co/openbmb/UltraCM-13b)
@@ -34,7 +35,7 @@ To collect high-quality preference and textual feedback, we design a fine-graine
 
 # Features
 
-- **Scale**: UltraFeedback consists of 64k prompts, 256k responses and 380k high-quality feedback. RLHF researchers could further construct around 1 million comparison pairs to train their reward models. 
+- **Scale**: UltraFeedback consists of 64k prompts, 256k responses and high-quality feedback. RLHF researchers could further construct around 340k comparison pairs to train their reward models. 
 - **Diversity**: As a preference dataset, diversity is the core requirement for UltraFeedback. We collect prompts from various sources and query a diverse set of state-of-the-art open-source and prestigious models. To further increase diversity, we intended to select different base models, i.e., LLaMA, Falcon, StarChat, MPT, GPT and Bard. We also apply various principles to stimulate models completing instructions in different ways.
 - **High-density**: UltraFeedback provides both numerical and textual feedback. Moreover, we wrote fine-grained annotation documents to help rate responses in all dimensions
 
@@ -202,4 +203,14 @@ Here we present an example of UltraFeedback
 - Although GPT-4 can provide well-aligned annotation and textual feedback for most samples, we must note that GPT-4 also makes mistakes. 
 
 
-
+## Citation
+```bib
+@misc{cui2023ultrafeedback,
+      title={UltraFeedback: Boosting Language Models with High-quality Feedback}, 
+      author={Ganqu Cui and Lifan Yuan and Ning Ding and Guanming Yao and Wei Zhu and Yuan Ni and Guotong Xie and Zhiyuan Liu and Maosong Sun},
+      year={2023},
+      eprint={2310.01377},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
