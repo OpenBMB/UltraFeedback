@@ -76,9 +76,12 @@ def annotate(example):
         
         response = response.split("\nOverall Score: ")
         assert len(response) == 2
-        critique, score = response[0].strip(), float(eval(response[1].split(".")[0].strip()))
+        # critique, score = response[0].strip(), float(eval(response[1].split(".")[0].strip()))
+        # example["completions"][i]["critique"] = critique
+        # example["completions"][i]["overall_score"] = score if score > 1 else 10*score 
+        critique, score = response[0].strip(), response[1].split(".")[0].strip()
         example["completions"][i]["critique"] = critique
-        example["completions"][i]["overall_score"] = score if score > 1 else 10*score 
+        example["completions"][i]["overall_score"] = score if "/" not in score else float(eval(score.split("/")[0].strip()))
 
     return example
 
