@@ -139,7 +139,7 @@ On nine benchmark datasets, UltraCM outperforms all open-source baselines and ap
     "completions": [ // four completions corresponding to the four models
         { // completion 1
             "model": "falcon-40b-instruct",
-            "principle": "helpfulness", // priciple that used to align model behavior
+            "principle": "helpfulness", // principle that used to align model behavior
             "custom_system_prompt": "As an AI assistant, ensure your response offers the perfect blend of accuracy, positivity, and intrigue. Strive to be educational while keeping the user engaged.", // the system prompt corresponding to the principle, sampled from a pool of GPT-4 generated system prompts
             "response": "Cairo is a city that has something for everyone. Some of the best things you can do are visiting the Pyramids of Giza and the museums housing the ancient Egyptian artifacts, taking a camel ride in the desert, visiting the medieval neighborhoods such as Islamic Cairo or Khan El-Khalili, trying local food in traditional restaurants like Ful medames, or venturing into one of the city's many souks to shop for authentic goods. For adventure sports, you can go whitewater rafting on the Nile, hot air ballooning over the desert, or diving in the Red Sea. Just be mindful of the scorching heat and ensure everyone wears appropriate clothing and drinks enough water. Above all, have fun and enjoy your trip!",
             "annotations": {
