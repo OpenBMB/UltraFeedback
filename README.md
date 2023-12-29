@@ -21,7 +21,12 @@
 - [2023/09/26]: We release the [UltraFeedback](https://huggingface.co/datasets/openbmb/UltraFeedback) dataset, along with UltraFeedback-powered reward model [UltraRM](https://huggingface.co/openbmb/UltraRM-13b) and critique model [UltraCM](https://huggingface.co/openbmb/UltraCM-13b)! Both built **new SOTAs** over open-source models!  
 
 # Update
-The initial version of UltraFeedback includes 2628 completions that were assigned an overall score of `10`. However, as pointed in Issue [#8](https://github.com/OpenBMB/UltraFeedback/issues/8), many of these completions should have been assigned a score of `1`. Intuitively, a completion with an overall score of `10` should be high-quality, which can be reflected in its corresponding fine-grained scores. Hence, to rectify the scores, we processed all the potentially faulty completions based on their fine-grained scores. Specifically, completions with fine-grained scores `<= 2` are likely to be of low quality and thus their `overall_score` have been manually adjusted to `1`. On the other hand, completions with fine-grained scores `> 4` have been deemed to accurately represent a score of `10` and thus their overall_score has been left unchanged. For the remaining completions, we have conducted a **re-annotation** process based on the original critique, with slight modifications to the prompts. Please refer to `./src/fix_overall_score_issue.py` for implementation.
+The initial version of UltraFeedback includes 2628 completions that were assigned an overall score of `10`. However, as pointed in Issue [#8](https://github.com/OpenBMB/UltraFeedback/issues/8), many of these completions should have been assigned a score of `1`. Intuitively, a completion with an overall score of `10` should be high-quality, which can be reflected in its corresponding `averaged` fine-grained scores. Hence, to rectify the scores, we processed all the potentially faulty completions based on their fine-grained scores. Specifically, 
+- Completions with fine-grained scores `<= 2` are likely to be of low quality and thus their `overall_score` have been manually adjusted to `1`. 
+- On the other hand, completions with fine-grained scores `> 4` have been deemed to accurately represent a score of `10` and thus their overall_score has been left unchanged. 
+- For the remaining completions, we have conducted a **re-annotation** process based on the original critique, with slight modifications to the prompts. 
+
+Please refer to `./src/fix_overall_score_issue.py` for implementation details.
 
 # Links
 
